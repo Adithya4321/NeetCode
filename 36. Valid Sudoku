@@ -1,0 +1,22 @@
+class Solution(object):
+    def isValidSudoku(self, board):
+        """
+        :type board: List[List[str]]
+        :rtype: bool
+        """
+        rows = [[False] * 9 for _ in range(9)]
+        cols = [[False] * 9 for _ in range(9)]
+        squares = [[False] * 9 for _ in range(9)]
+
+        for r in range(9):
+            for c in range(9):
+                if board[r][c] == '.':
+                    continue
+                num = int(board[r][c]) - 1
+                square_idx = (r // 3) * 3 + c // 3
+                if (rows[r][num] or cols[c][num] or squares[square_idx][num]):
+                    return False
+                rows[r][num] = True
+                cols[c][num] = True
+                squares[square_idx][num] = True
+        return True
