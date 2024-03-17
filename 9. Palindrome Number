@@ -1,0 +1,17 @@
+class Solution(object):
+    def isPalindrome(self, x):
+        """
+        :type x: int
+        :rtype: bool
+        """
+        if x<0:
+            return False
+        cnt=x
+        x1=str(x)
+        rev=''
+        for i in range(len(x1)-1,-1,-1):
+            rev=rev+x1[i]
+
+        if cnt==int(rev):
+            return True
+        
